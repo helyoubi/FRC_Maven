@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns="http://xmlns.jcp.org/jsf/passthrough">
+
+
+
+<h:head>
+
+	<title>FRC</title>
+
+	<meta charset="utf-8"/>
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    
+	<h:outputStylesheet library="default" name="css/styles.css"></h:outputStylesheet>
+
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
+
+	<style type="text/css">
+	
+		body {
+			background-color: #aaa;
+			padding-top: 10px;
+		}
+		
+		[class*="col-"] {
+			margin-bottom: 20px;
+		}
+		
+		
+		.well {
+			background-color: #CCC;
+			padding: 20px;
+		}
+		
+		a:active, a:focus {
+			outline: none;
+		}
+		
+		.inline-form input {
+			display: inline-block;
+			width: 100px;
+		}
+	
+	
+	
+	</style>
+
+
+</h:head>
+
+<h:body>
+
+
+	<div class="container">
+
+	<ui:include src="/template/common/commonHeader.xhtml" />
+		
+
+		<div class="alert alert-warning alert-dismissable col-lg-6">
+			<button type="button" class="close" data-dismiss="alert">&#215;</button>
+			<strong>Information : </strong> Le site web est toujours en cours de
+			développement
+		</div>
+		
+		
+		<div class="clearfix"></div>
+		
+		
+		<h3><span class="label label-warning">Exporter toute la base de données :</span></h3>
+		
+		<p style="color: white;">Dans cette page vous pouvez exporter toutes la base de données des prélèvements soit : </p>
+		
+		<p:graphicImage name="default//images/excel-xls-icon.png" width="35"/> <p style="color: white; display: inline-block;">: en format XLS</p>
+		
+		<div class="clearfix"></div>
+		
+		<p:graphicImage name="default//images/pdf-icon.png" width="35"/> <p style="color: white; display: inline-block;">: en format PDF</p>
+		
+		<div class="clearfix"></div>
+		
+		<p:graphicImage name="default//images/csv-icon.png" width="35"/> <p style="color: white; display: inline-block;">: en format CSV</p>
+		
+		<div class="clearfix"></div>
+		
+		<p:graphicImage name="default//images/xml-icon.png" width="35"/> <p style="color: white; display: inline-block;">: en format XML</p>
+		
+		<div class="clearfix"></div>
+		<!-- form avec export -->
+  		
+  	<h:form>
+    <p:dataTable id="tbl" var="prelv" value="#{prelevementBean.prelevementList}"
+                 paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {Exporters}"
+                 paginator="true" rows="10" style="margin-bottom:20px">
+ 
+        <f:facet name="{Exporters}">
+            <h:commandLink>
+                <p:graphicImage name="default//images/excel-xls-icon.png" width="24"/>
+                <p:dataExporter type="xls" target="tbl" fileName="ExtractionPrelevements_#{currentDate}" />
+            </h:commandLink>
+ 
+            <h:commandLink>
+                <p:graphicImage name="default//images/pdf-icon.png" width="24"/>
+                <p:dataExporter type="pdf" target="tbl" fileName="ExtractionPrelevements_#{currentDate}"/>
+            </h:commandLink>
+ 
+            <h:commandLink>
+                <p:graphicImage name="default//images/csv-icon.png" width="24"/>
+                <p:dataExporter type="csv" target="tbl" fileName="ExtractionPrelevements_#{currentDate}" />
+            </h:commandLink>
+ 
+            <h:commandLink>
+                <p:graphicImage name="default//images/xml-icon.png" width="24"/>
+                <p:dataExporter type="xml" target="tbl" fileName="ExtractionPrelevements_#{currentDate}" />
+            </h:commandLink>
+        </f:facet>
+ 
+				<p:column headerText="Id">
+			        <h:outputText value="#{prelv.id_prelevement}" />
+			    </p:column>
+	         
+	            <p:column headerText="Espèce">
+			        <h:outputText value="#{prelv.espece}" />
+			    </p:column>
+			 
+			    <p:column headerText="Saison">
+			        <h:outputText value="#{prelv.saison}" />
+			    </p:column>
+			    
+			    <p:column headerText="Département">
+			        <h:outputText value="#{prelv.departement}" />
+			    </p:column>
+			    
+			    <p:column headerText="Commune">
+			        <h:outputText value="#{prelv.commune}" />
+			    </p:column>
+			    
+			    <p:column headerText="Code">
+			        <h:outputText value="#{prelv.code}" />
+			    </p:column>
+			    
+			    <p:column headerText="Atrributions">
+			        <h:outputText value="#{prelv.attributions}" />
+			    </p:column>
+			    
+			    <p:column headerText="Réalisations">
+			        <h:outputText value="#{prelv.realisations}" />
+			    </p:column>		        		
+
+			    </p:dataTable>
+			   
+	</h:form>
+  			
+
+  		<div class="clearfix"></div>
+  		
+  		
+
+	<ui:include src="/template/common/commonFooter.xhtml" /> 
+	
+		   
+				
+	</div>
+	
+ 
+    <h:outputScript name = "default/js/bootstrap.js" /> 
+    <h:outputScript name = "default/js/bootstrap.min.js" /> 
+
+
+    
+
+</h:body>
+
+</html>
+

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	
+	<meta charset="utf-8"/>
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    
+
+
+</h:head>
+
+<h:body>
+
+<ui:composition>
+
+<!-- Menu déroulant-->
+
+	
+	 <h:form class="navbar-form inline-form" role="form">
+	
+      <nav class="navbar navbar-inverse" role="navigation">   
+        <div class="navbar-header">   
+          
+          <a class="navbar-brand" href="index.xhtml">FRC</a>
+        </div>
+     
+        <div>
+          
+          <ul class="nav navbar-nav">
+
+            <li> <a href="index.xhtml">Accueil</a> </li>
+
+			<li class="dropdown"> 
+              <a data-toggle="dropdown" href="#">Graphiques<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+              <li class="dropdown-header"> Génerale</li>
+              <li><a href="graphiqueEvolution.xhtml"><span class="glyphicon glyphicon-screenshot"></span> Evolution générale</a></li>
+              <li class="divider"></li>
+              <li class="dropdown-header"> Autres</li>
+              <li><a href="graphiquePersonnaliser.xhtml"><span class="glyphicon glyphicon-list-alt"></span> Espèces Chassables</a></li>           
+              <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Autres</a></li>
+              </ul>
+            </li>
+
+            <li class="dropdown"> 
+              <a data-toggle="dropdown" href="#">Données<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+              <li class="dropdown-header">Consultation</li>          
+              <li><a href="tableauxFiltrage.xhtml"><span class="glyphicon glyphicon-screenshot"></span> Espèces Chassables (par filtrage)</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-screenshot"></span> Autres</a></li>
+              <li class="divider"></li>
+              <li class="dropdown-header">Exporter</li>
+              <li><a href="ExporterDonneeFiltrage.xhtml"><span class="glyphicon glyphicon-list-alt"></span> Espèces Chassables</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-list-alt"></span> Autres</a></li>
+              </ul>
+            </li> 
+            
+             
+
+            <li> <a href="Enquete.xhtml">Enquête</a> </li>
+           
+           
+            <li class="dropdown"> 
+              <a data-toggle="dropdown" href="#">Importer<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+             
+              <li><a href="importation.xhtml"><span class="glyphicon glyphicon-screenshot"></span> Grand gibier</a></li>
+              
+              </ul>
+            </li>
+            
+            <li>
+            
+	            	<h:commandLink action="#{chasseur_loginBean.logout}"  value="Se déconnecter"/>
+
+            </li>
+            
+            
+          
+          </ul>
+
+        </div>
+      </nav>
+      
+	</h:form>
+<!-- Menu déroulant-->
+
+
+
+
+</ui:composition>
+
+
+
+</h:body>
+</html>

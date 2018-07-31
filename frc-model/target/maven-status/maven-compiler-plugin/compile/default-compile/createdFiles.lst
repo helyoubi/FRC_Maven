@@ -1,0 +1,5 @@
+com\frc\model\Chasse_enquete.class
+com\frc\model\Frc_admin.class
+com\frc\model\Prelevement_saisons.class
+com\frc\model\Chasseurs_login.class
+com\frc\model\App.class

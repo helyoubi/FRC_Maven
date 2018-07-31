@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+
+<html lang="fr" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+
+<h:head>
+
+	<title>FRC</title>
+
+	<meta charset="utf-8"/>
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+		
+	<h:outputStylesheet library="default" name="css/login.css"></h:outputStylesheet>
+
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet"/>
+	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet"/>
+	
+	<f:loadBundle basename="com.frc.bundle.messages" var="msg"/>
+
+	<style type="text/css">
+	
+		body {
+			background-color: #aaa;
+			padding-top: 10px;
+		}
+		
+		[class*="col-"] {
+			margin-bottom: 20px;
+		}
+		
+		
+		.well {
+			background-color: #CCC;
+			padding: 20px;
+		}
+		
+		a:active, a:focus {
+			outline: none;
+		}
+		
+		.inline-form input {
+			display: inline-block;
+			width: 100px;
+		}
+	
+	
+	
+	</style>
+
+
+</h:head>
+
+<h:body>
+
+
+	<div class="container">
+	
+    <div class="row">
+        <div class="col-md-12">
+            <div class="pr-wrap">
+                <div class="pass-reset">
+                    <label>
+                        Votre adresse mail utilisé :</label>
+                    <p:inputText id="email" required="true" label="email" size="22"
+						requiredMessage="Please enter your email address."
+						validatorMessage="Invalid email format"
+						value="#{userBean.email}">
+				
+					  <f:validateRegex
+						pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+
+					</p:inputText>
+                                      
+                    <h:commandButton action="#{login.validateUsernamePassword}" value="Valider" class="pass-reset-submit btn btn-success btn-sm" ></h:commandButton>
+                    
+                </div>
+            </div>
+            
+            <div class="wrap">
+            
+            <p class="form-title">Authentification</p>
+                    
+                <h:form class="login" id="formuLogin">
+     
+             
+	                <h:inputText id="loginChasseur" placeholder="Username" value="#{chasseur_loginBean.login_chasseur}" required="true" requiredMessage="#{msg['login.loginChasseur']}">
+	                
+	                	<f:ajax event="blur" render="loginChasseurMessage" />
+	                	
+	                </h:inputText>
+	                
+	                <h:message style="color:red;"  id="loginChasseurMessage" for="loginChasseur" errorClass="erreur" />
+	                
+	                
+	                <h:inputSecret id="mdpChasseur" placeholder="Password" value="#{chasseur_loginBean.password_chasseur}" required="true" requiredMessage="#{msg['login.mdpChasseur']}">
+	                
+	                	<f:ajax event="blur" render="mdpChasseurMessage" />
+	                
+	                </h:inputSecret>
+	                
+	                <h:message style="color:red;" id="mdpChasseurMessage" for="mdpChasseur" errorClass="erreur" />
+	               
+	               
+	                <h:messages style = "color:red;margin-top:12px;" globalOnly="true" infoClass="info" />
+	               
+	                <h:commandButton action="#{chasseur_loginBean.validateUsernamePassword}" value="Connexion" class="btn btn-success btn-sm"></h:commandButton>
+	                
+	                <div class="remember-forgot">
+	                    <div class="row">
+	                        <div class="col-md-6">
+	                            <div class="checkbox">
+	                                <label>
+	                                    <h:selectBooleanCheckbox value="#{chasseur_loginBean.remembre}"/>  Se souvenir de moi
+	                                </label>
+	                            </div>
+	                        </div>
+	                        <div class="col-md-6 forgot-pass-content">
+	                            <a href="javascript:void(0)" class="forgot-pass">Mot de passe oublié?</a>
+	                        </div>
+	                    </div>
+	                </div>
+                
+                </h:form>
+            
+            </div>
+        </div>
+    </div>
+   
+</div>
+
+  <h:outputScript name = "default/js/bootstrap.js" /> 
+  <h:outputScript name = "default/js/bootstrap.min.js" /> 
+
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+	
+	
+	    
+</h:body>
+
+</html>
+
